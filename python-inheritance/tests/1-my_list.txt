@@ -1,0 +1,62 @@
+===========================
+How to Use 1-my_list.py
+===========================
+
+This module defines a class ``MyList`` that inherits from ``list`` and adds a
+public instance method ``print_sorted(self)``.
+
+Importing the class:
+    >>> MyList = __import__('1-my_list').MyList
+
+Instantiation and Inheritance:
+    >>> my_list = MyList()
+    >>> isinstance(my_list, list)
+    True
+    >>> type(my_list) is MyList
+    True
+    >>> print(my_list)
+    []
+
+Empty list:
+    >>> my_list.print_sorted()
+    []
+
+Appending and sorting positive integers:
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+Already sorted list:
+    >>> sorted_list = MyList([1, 2, 3])
+    >>> sorted_list.print_sorted()
+    [1, 2, 3]
+
+Reverse sorted list:
+    >>> rev_list = MyList([5, 4, 3, 2, 1])
+    >>> rev_list.print_sorted()
+    [1, 2, 3, 4, 5]
+
+Negative integers:
+    >>> neg_list = MyList([-10, 5, -3, 0, 2])
+    >>> neg_list.print_sorted()
+    [-10, -3, 0, 2, 5]
+    >>> print(neg_list)
+    [-10, 5, -3, 0, 2]
+
+Single element:
+    >>> single = MyList([42])
+    >>> single.print_sorted()
+    [42]
+
+Duplicate elements:
+    >>> dup_list = MyList([3, 1, 3, 2, 1])
+    >>> dup_list.print_sorted()
+    [1, 1, 2, 3, 3]
