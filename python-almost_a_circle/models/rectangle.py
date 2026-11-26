@@ -3,7 +3,7 @@
 
 Provides `Rectangle` inheriting from `Base` with validated private attributes,
 property getters and setters, area calculation, ASCII display with x/y offset,
-string representation, and positional attribute updates.
+string representation, and positional/keyword attribute updates.
 """
 from models.base import Base
 
@@ -96,13 +96,24 @@ class Rectangle(Base):
             self.id, self.x, self.y, self.width, self.height
         )
 
-    def update(self, *args):
-        """Assign positional arguments to attributes in order:
-        id, width, height, x, y.
+    def update(self, *args, **kwargs):
+        """Assign positional or keyword arguments to attributes.
+
+        Args:
+            *args: Positional arguments in order: id, width, height, x, y.
+            **kwargs: Key/value pairs of attributes to update (skipped if
+                args is non-empty).
         """
-        attrs = ["id", "width", "height", "x", "y"]
-        for attr, val in zip(attrs, args):
-            if attr == "id" and val is None:
-                self.__init__(self.width, self.height, self.x, self.y)
-            else:
-                setattr(self, attr, val)
+        if args and len(args) > 0:
+            attrs = ["id", "width", "height", "x", "y"]
+            for attr, val in zip(attrs, args):
+                if attr == "id" and val is None:
+                    self.__init__(self.width, self.height, self.x, self.y)
+                else:
+                    setattr(self, attr, val)
+        elif kwargs:
+            for k, v in kwargs.items():
+                if k == "id" and v is None:
+                    self.__init__(self.width, self.height, self.x, self.y)
+                else:
+                    setattr(self, k, v)
