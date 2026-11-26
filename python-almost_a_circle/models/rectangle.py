@@ -2,7 +2,7 @@
 """Defines a rectangle class.
 
 Provides `Rectangle` inheriting from `Base` with validated private attributes,
-property getters and setters, and area calculation.
+property getters and setters, area calculation, and ASCII display.
 """
 from models.base import Base
 
@@ -81,3 +81,8 @@ class Rectangle(Base):
     def area(self):
         """Return the area of the Rectangle."""
         return self.width * self.height
+
+    def display(self):
+        """Print the Rectangle instance with the `#` character."""
+        for _ in range(self.height):
+            print("#" * self.width)
