@@ -3,7 +3,7 @@
 
 Provides `Rectangle` inheriting from `Base` with validated private attributes,
 property getters and setters, area calculation, ASCII display with x/y offset,
-string representation, positional/keyword updates, and dictionary serialization.
+string representation, positional/keyword updates, and serialization.
 """
 from models.base import Base
 
