@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Defines a square class.
 
-Provides `Square` inheriting from `Rectangle` with equal width and height
-initialized via `size` and custom string representation.
+Provides `Square` inheriting from `Rectangle` with a `size` property getter
+and setter that validates and updates both `width` and `height`.
 """
 from models.rectangle import Rectangle
 
@@ -20,6 +20,16 @@ class Square(Rectangle):
             id (int): The identity of the new Square.
         """
         super().__init__(size, size, x, y, id)
+
+    @property
+    def size(self):
+        """Get/set the size of the Square."""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        self.width = value
+        self.height = value
 
     def __str__(self):
         """Return the string representation of the Square."""
