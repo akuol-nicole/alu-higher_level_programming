@@ -2,7 +2,8 @@
 """Defines a square class.
 
 Provides `Square` inheriting from `Rectangle` with a `size` property getter
-and setter, positional/keyword attribute updates, and string representation.
+and setter, positional/keyword attribute updates, string representation,
+and dictionary serialization.
 """
 from models.rectangle import Rectangle
 
@@ -58,3 +59,12 @@ class Square(Rectangle):
                     self.__init__(self.size, self.x, self.y)
                 else:
                     setattr(self, k, v)
+
+    def to_dictionary(self):
+        """Return the dictionary representation of the Square."""
+        return {
+            "id": self.id,
+            "size": self.size,
+            "x": self.x,
+            "y": self.y
+        }
