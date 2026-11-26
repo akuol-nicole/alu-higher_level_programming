@@ -2,8 +2,8 @@
 """Defines a rectangle class.
 
 Provides `Rectangle` inheriting from `Base` with validated private attributes,
-property getters and setters, area calculation, ASCII display, and string
-representation.
+property getters and setters, area calculation, ASCII display with x/y offset,
+and string representation.
 """
 from models.base import Base
 
@@ -85,8 +85,10 @@ class Rectangle(Base):
 
     def display(self):
         """Print the Rectangle instance with the `#` character."""
+        for _ in range(self.y):
+            print("")
         for _ in range(self.height):
-            print("#" * self.width)
+            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         """Return the string representation of the Rectangle."""
