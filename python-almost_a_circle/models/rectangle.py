@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Defines a rectangle class.
 
-Provides `Rectangle` inheriting from `Base` with validated private attributes
-and property getters and setters for `width`, `height`, `x`, and `y`.
+Provides `Rectangle` inheriting from `Base` with validated private attributes,
+property getters and setters, and area calculation.
 """
 from models.base import Base
 
@@ -77,3 +77,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """Return the area of the Rectangle."""
+        return self.width * self.height
