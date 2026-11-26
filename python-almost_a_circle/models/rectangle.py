@@ -3,7 +3,7 @@
 
 Provides `Rectangle` inheriting from `Base` with validated private attributes,
 property getters and setters, area calculation, ASCII display with x/y offset,
-and string representation.
+string representation, and positional attribute updates.
 """
 from models.base import Base
 
@@ -95,3 +95,14 @@ class Rectangle(Base):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.x, self.y, self.width, self.height
         )
+
+    def update(self, *args):
+        """Assign positional arguments to attributes in order:
+        id, width, height, x, y.
+        """
+        attrs = ["id", "width", "height", "x", "y"]
+        for attr, val in zip(attrs, args):
+            if attr == "id" and val is None:
+                self.__init__(self.width, self.height, self.x, self.y)
+            else:
+                setattr(self, attr, val)
