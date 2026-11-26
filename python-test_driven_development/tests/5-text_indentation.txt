@@ -1,0 +1,101 @@
+================================
+How to Use 5-text_indentation.py
+================================
+
+This module defines a function ``text_indentation(text)``.
+
+Usage
+=====
+
+``text_indentation(...)`` prints text with two new lines after each ``.``,
+``?``, and ``:`` character, with no spaces at the beginning or end of each
+printed line.
+
+::
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation("Hello?")
+    Hello?
+    <BLANKLINE>
+
+No spaces are printed at the beginning or end of a line.
+
+::
+
+    >>> text_indentation("   Hi there.   ")
+    Hi there.
+    <BLANKLINE>
+
+::
+
+    >>> text_indentation("   ")
+
+New lines are also preserved, with leading and trailing spaces stripped on
+each line.
+
+::
+
+    >>> text_indentation("Hello.\n   How are you?")
+    Hello.
+    <BLANKLINE>
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+
+::
+
+    >>> text_indentation("\n\n\n We just printed three new lines.")
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    We just printed three new lines.
+    <BLANKLINE>
+
+A combo of ``.``, ``?``, and ``:`` delimiters works as expected, and text not
+ending in a delimiter prints without trailing new lines.
+
+::
+
+    >>> text_indentation("Let's print a better-looking text: "
+    ... "Is this better? Yes, it is.   And no newline at the end")
+    Let's print a better-looking text:
+    <BLANKLINE>
+    Is this better?
+    <BLANKLINE>
+    Yes, it is.
+    <BLANKLINE>
+    And no newline at the end
+
+Invalid Text
+============
+
+The parameter ``text`` must be a string. Otherwise, a TypeError is raised.
+
+::
+
+    >>> text_indentation(7)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+::
+
+    >>> text_indentation({"one": 1, "two": 2})
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+::
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Missing Arguments
+=================
+
+At least one argument must be provided.
+
+::
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
