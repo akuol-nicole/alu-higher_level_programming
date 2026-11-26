@@ -2,7 +2,7 @@
 """Defines a square class.
 
 Provides `Square` inheriting from `Rectangle` with a `size` property getter
-and setter that validates and updates both `width` and `height`.
+and setter, positional/keyword attribute updates, and string representation.
 """
 from models.rectangle import Rectangle
 
@@ -36,3 +36,25 @@ class Square(Rectangle):
         return "[Square] ({}) {}/{} - {}".format(
             self.id, self.x, self.y, self.width
         )
+
+    def update(self, *args, **kwargs):
+        """Assign positional or keyword arguments to attributes.
+
+        Args:
+            *args: Positional arguments in order: id, size, x, y.
+            **kwargs: Key/value pairs of attributes to update (skipped if
+                args is non-empty).
+        """
+        if args and len(args) > 0:
+            attrs = ["id", "size", "x", "y"]
+            for attr, val in zip(attrs, args):
+                if attr == "id" and val is None:
+                    self.__init__(self.size, self.x, self.y)
+                else:
+                    setattr(self, attr, val)
+        elif kwargs:
+            for k, v in kwargs.items():
+                if k == "id" and v is None:
+                    self.__init__(self.size, self.x, self.y)
+                else:
+                    setattr(self, k, v)
