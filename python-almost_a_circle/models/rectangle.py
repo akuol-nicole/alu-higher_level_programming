@@ -3,7 +3,7 @@
 
 Provides `Rectangle` inheriting from `Base` with validated private attributes,
 property getters and setters, area calculation, ASCII display with x/y offset,
-string representation, and positional/keyword attribute updates.
+string representation, positional/keyword updates, and dictionary serialization.
 """
 from models.base import Base
 
@@ -117,3 +117,13 @@ class Rectangle(Base):
                     self.__init__(self.width, self.height, self.x, self.y)
                 else:
                     setattr(self, k, v)
+
+    def to_dictionary(self):
+        """Return the dictionary representation of the Rectangle."""
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
