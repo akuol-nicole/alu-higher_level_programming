@@ -9,7 +9,8 @@ class TestBase(unittest.TestCase):
 
     def test_auto_id(self):
         b1 = Base()
-        self.assertIsNotNone(b1.id)
+        self.assertIsInstance(b1.id, int)
+        self.assertGreater(b1.id, 0)
 
     def test_auto_id_increment(self):
         b1 = Base()
@@ -19,6 +20,11 @@ class TestBase(unittest.TestCase):
     def test_passed_id(self):
         b = Base(89)
         self.assertEqual(b.id, 89)
+
+    def test_none_id(self):
+        b1 = Base(None)
+        b2 = Base(None)
+        self.assertEqual(b2.id, b1.id + 1)
 
     def test_to_json_string_none(self):
         self.assertEqual(Base.to_json_string(None), "[]")
